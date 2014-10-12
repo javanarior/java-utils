@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="java-utils">
+
+    <body>
+        <breadcrumbs>
+            <item name="Java Utilities" href="." />
+        </breadcrumbs>
+
+        <menu name="Java Utilities">
+            <item name="Introduction" href="index.html" />
+            <item name="Features" href="features.html" collapse="true">
+                <item name="Speaking Compare" href="speaking-compare.html" />
+            </item>
+        </menu>
+        <menu ref="reports" />
+    </body>
+
+    <version position="right" />
+    <publishDate position="right" />
+
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.3.1</version>
+    </skin>
+
+    <custom>
+        <fluidoSkin>
+            <copyrightClass>pull-right</copyrightClass>
+            <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+            <breadcrumbDivider>|</breadcrumbDivider>
+        </fluidoSkin>
+    </custom>
+
+</project>
