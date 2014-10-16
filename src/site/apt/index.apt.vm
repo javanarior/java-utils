@@ -24,7 +24,7 @@ Introduction
 ----------------------------------------------------
     <dependency>
         <groupId>de.javanarior.library</groupId>
-        <artifactId>java-utilities</artifactId>
+        <artifactId>${project.artifactId}</artifactId>
         <version>${project.version}</version>
     <dependency>
 ----------------------------------------------------
