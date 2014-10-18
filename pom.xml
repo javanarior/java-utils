@@ -42,7 +42,7 @@
 
     <properties>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <javanarior-build-resources.version>3</javanarior-build-resources.version>
+        <javanarior-build-resources.version>5</javanarior-build-resources.version>
     </properties>
 
 
@@ -149,7 +149,7 @@
                 <configuration>
                     <scmBranch>gh-pages</scmBranch>
                     <checkinComment>Site checkin for ${project.name} ${project.version}</checkinComment>
-                     <dryRun>${dryRun}</dryRun>
+                    <dryRun>${dryRun}</dryRun>
                 </configuration>
             </plugin>
 
@@ -552,7 +552,7 @@
 
         <profile>
             <id>m2e</id>
-   <!-- This profile is only activated when building in Eclipse with m2e -->
+            <!-- This profile is only activated when building in Eclipse with m2e -->
             <activation>
                 <property>
                     <name>m2e.version</name>
