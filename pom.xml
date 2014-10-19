@@ -71,15 +71,6 @@
 
 
     <dependencies>
-        <!-- Also listed as dependency to automate update. -->
-        <dependency>
-            <groupId>de.javanarior</groupId>
-            <artifactId>javanarior-build-resources</artifactId>
-            <version>${javanarior-build-resources.version}</version>
-        </dependency>
-
-
-
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
