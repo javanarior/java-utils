@@ -32,17 +32,12 @@ public class ByteCodeClassLoaderTest {
 
     @BeforeMethod
     public void setUp() {
-        classLoader = new ByteCodeClassLoader(ClassLoader.getSystemClassLoader());
+        classLoader = ByteCodeClassLoader.getClassLoader();
     }
 
     @AfterMethod
     public void tearDown() {
         classLoader = null;
-    }
-
-    @Test(expectedExceptions = ClassNotFoundException.class)
-    public void testfindClassFromSystem() throws Exception {
-        classLoader.findClass("java.lang.Object");
     }
 
     public void testLoad() throws Exception {
@@ -70,7 +65,7 @@ public class ByteCodeClassLoaderTest {
 
     public void testLoadSecondClassWithNewReference() throws Exception {
         Class<?> first = classLoader.load(CLASS_NAME, readByteCode());
-        classLoader = new ByteCodeClassLoader(ClassLoader.getSystemClassLoader());
+        classLoader = ByteCodeClassLoader.getClassLoader();
         Class<?> second = classLoader.load(CLASS_NAME, readByteCode());
         Assert.assertNotNull(first);
         Assert.assertNotNull(second);

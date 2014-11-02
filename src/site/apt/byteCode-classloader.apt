@@ -1,0 +1,23 @@
+    ---
+    Byte Code Class Loader
+    ---
+    ---
+    ---
+
+Byte Code Class Loader
+
+  Sometimes it's necessary or more comfortably to generate classes. To use this classes, the classes must
+be loaded into to the JVM, for that you need a class loader. Usually the method ClassLoader#defineClass() is
+used for that purpose. But this Method has the scope protected, so you can't access it outside of the class hierarchy.
+For this reason the ByteCodeClassLoader exists. To load a class you need the byte code and the name of the class in the
+binary format ({{{JLS §13.1}http://docs.oracle.com/javase/specs/jls/se7/html/jls-13.html#jls-13.1}}).
+
+* Usage
+
+To get a instance of the Class Loader you call
+
+----------------------------------------
+    ByteCodeClassLoader.getClassLoader();
+----------------------------------------
+
+TODO: Finish documentation

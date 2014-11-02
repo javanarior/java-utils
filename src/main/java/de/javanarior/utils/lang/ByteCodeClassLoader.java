@@ -15,20 +15,17 @@
  */
 package de.javanarior.utils.lang;
 
-import java.util.Hashtable;
-import java.util.Map;
-
 /**
  * Class loader to load byte code directly from byte array. This class loader
  * can be used
  * to load classes from Java Compiler API which are compiled in memory or from
  * other byte
- * generating frameworks like asm or cglib.
+ * generating frameworks like asm.
  * The ClassLoader follows the 'parent-first' delegation model .
  */
-public class ByteCodeClassLoader extends ClassLoader {
+public final class ByteCodeClassLoader extends ClassLoader {
 
-    private static final Map<String, Class<?>> CLASSES = new Hashtable<>();
+    private static final ByteCodeClassLoader INSTANCE = new ByteCodeClassLoader(getSystemClassLoader());
 
     /**
      * Create a new ByteCodeClassLoader instance.
@@ -36,17 +33,12 @@ public class ByteCodeClassLoader extends ClassLoader {
      * @param parent
      *            - parent class loader
      */
-    public ByteCodeClassLoader(ClassLoader parent) {
+    private ByteCodeClassLoader(ClassLoader parent) {
         super(parent);
     }
 
-    @Override
-    protected Class<?> findClass(String name) throws ClassNotFoundException {
-        Class<?> clazz = CLASSES.get(name);
-        if (clazz != null) {
-            return clazz;
-        }
-        return super.findClass(name);
+    public static ByteCodeClassLoader getClassLoader() {
+        return INSTANCE;
     }
 
     /**
@@ -71,9 +63,19 @@ public class ByteCodeClassLoader extends ClassLoader {
         } catch (ClassNotFoundException exception) {
             Class<?> defineClass = defineClass(binaryName, byteCode, 0, byteCode.length);
             resolveClass(defineClass);
-            CLASSES.put(binaryName, defineClass);
             return defineClass;
         }
+    }
+
+    /**
+     * Load the class from a {@link GeneratedClass} container.
+     *
+     * @param clazz
+     *            - to load
+     * @return class object
+     */
+    public Class<?> load(GeneratedClass clazz) {
+        return load(clazz.getClassName(), clazz.getByteCode());
     }
 
 }
