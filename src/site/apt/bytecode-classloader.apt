@@ -17,21 +17,14 @@ the full qualified class name, separated with dots ('.').
 
   To get a instance of the Classloader you call
 
-----------------------------------------
-    ByteCodeClassLoader classLoader = ByteCodeClassLoader.getClassLoader();
-----------------------------------------
+%{include|set-first-line=1|snippet=getClassLoader|source=src/main/java/de/javanarior/utils/example/lang/ByteCodeClassLoaderExample.java}
 
   Then your bytecode could be loaded with
 
-----------------------------------------
-    classLoader.load(className, byteCode);
-----------------------------------------
+%{include|set-first-line=1|snippet=loadClass|source=src/main/java/de/javanarior/utils/example/lang/ByteCodeClassLoaderExample.java}
 
   or with
 
-----------------------------------------
-    GeneratedClass generatedClass = awesomeClassGenerator.generate();
-    classLoader.load(generatedClass);
-----------------------------------------
+%{include|set-first-line=1|snippet-start-offset=0|snippet=loadClassWithContainer|source=src/main/java/de/javanarior/utils/example/lang/ByteCodeClassLoaderExample.java}
 
-  GeneratedClass is a container objects which hold the class name and the bytecode.
+  ByteCodeContainer is a container objects which hold the class name and the bytecode.

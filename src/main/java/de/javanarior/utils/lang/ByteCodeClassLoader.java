@@ -36,6 +36,11 @@ public final class ByteCodeClassLoader extends ClassLoader {
         super(parent);
     }
 
+    /**
+     * Create a new ByteCodeClassLoader instance.
+     *
+     * @return bytecode classloader
+     */
     public static ByteCodeClassLoader getClassLoader() {
         return INSTANCE;
     }
@@ -65,13 +70,13 @@ public final class ByteCodeClassLoader extends ClassLoader {
     }
 
     /**
-     * Load the class from a {@link GeneratedClass} container.
+     * Load the class from a {@link ByteCodeContainer} container.
      *
      * @param clazz
      *            - to load
      * @return class object
      */
-    public Class<?> load(GeneratedClass clazz) {
+    public Class<?> load(ByteCodeContainer clazz) {
         return load(clazz.getClassName(), clazz.getByteCode());
     }
 

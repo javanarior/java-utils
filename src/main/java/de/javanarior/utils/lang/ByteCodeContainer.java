@@ -20,20 +20,20 @@ package de.javanarior.utils.lang;
  * the class and the class name in the binary format. Both are necessary to load
  * the class into the JVM.
  */
-public class GeneratedClass {
+public class ByteCodeContainer {
 
     private final String className;
     private final byte[] byteCode;
 
     /**
-     * Create a new GeneratedClass instance.
+     * Create a new ByteCodeContainer instance.
      *
      * @param className
      *            - class name in binary format
      * @param byteCode
      *            - of the class
      */
-    public GeneratedClass(String className, byte[] byteCode) {
+    public ByteCodeContainer(String className, byte[] byteCode) {
         this.className = className;
         this.byteCode = byteCode;
     }
