@@ -16,7 +16,7 @@ abstract adapter class which could be extended. Extending from a class is not al
 In this cases, it's possible to create a SpeakingComparable wrapper for a Comparable.
 
   To avoid overloading of Object#equals() the equals method is named equalsTo(). This will also support
-cases where equals is inconsistent with compareTo. The Javadoc of Comparable noted for this
+cases where equals is inconsistent with compareTo. The Javadoc of Comparable noted
 
 -----------------------------------
   It is strongly recommended (though not required) that natural orderings be consistent with equals.
