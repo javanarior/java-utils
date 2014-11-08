@@ -1,4 +1,5 @@
   * {{{./speaking-compare.html} Speaking Compare (SpeakingComparable/SpeakingComparator)}}
-  * {{{./byteCode-classloader.html} Speaking Compare (ByteCodeClassloader)}}
+
+  * {{{./bytecode-classloader.html} Bytecode Classloader (ByteCodeClassLoader)}}
 
 []

@@ -10,6 +10,7 @@
             <item name="Introduction" href="index.html" />
             <item name="Features" href="features.html" collapse="true">
                 <item name="Speaking Compare" href="speaking-compare.html" />
+                <item name="ByteCode ClassLoader" href="bytecode-classloader.html" />
             </item>
         </menu>
         <menu ref="reports" />

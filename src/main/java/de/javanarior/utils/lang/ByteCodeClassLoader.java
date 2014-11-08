@@ -16,11 +16,10 @@
 package de.javanarior.utils.lang;
 
 /**
- * Class loader to load byte code directly from byte array. This class loader
+ * Classloader to load byte code directly from byte array. This classloader
  * can be used
  * to load classes from Java Compiler API which are compiled in memory or from
- * other byte
- * generating frameworks like asm.
+ * other byte generating frameworks like asm.
  * The ClassLoader follows the 'parent-first' delegation model .
  */
 public final class ByteCodeClassLoader extends ClassLoader {
@@ -31,7 +30,7 @@ public final class ByteCodeClassLoader extends ClassLoader {
      * Create a new ByteCodeClassLoader instance.
      *
      * @param parent
-     *            - parent class loader
+     *            - parent classloader
      */
     private ByteCodeClassLoader(ClassLoader parent) {
         super(parent);
@@ -43,14 +42,12 @@ public final class ByteCodeClassLoader extends ClassLoader {
 
     /**
      * Load class with name {@code binaryName} with byte code {@code byteCode}.
-     * If the class was loaded previously, the class is loaded from static
-     * cache.
      *
      * @param binaryName
-     *            - The Class name in the Binary name format, as expected from
+     *            - The Class name in the binary name format, as expected from
      *            {@link ClassLoader}
      * @param byteCode
-     *            - byte code to load
+     *            - byteCode to load
      * @return {@code Class} object
      */
     public Class<?> load(String binaryName, byte[] byteCode) {
