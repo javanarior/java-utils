@@ -16,7 +16,7 @@
 package de.javanarior.utils.lang;
 
 /**
- * Classloader to load byte code directly from byte array. This classloader
+ * Classloader to load bytecode directly from byte array. This classloader
  * can be used
  * to load classes from Java Compiler API which are compiled in memory or from
  * other byte generating frameworks like asm.
@@ -41,7 +41,7 @@ public final class ByteCodeClassLoader extends ClassLoader {
     }
 
     /**
-     * Load class with name {@code binaryName} with byte code {@code byteCode}.
+     * Load class with name {@code binaryName} with bytecode {@code byteCode}.
      *
      * @param binaryName
      *            - The Class name in the binary name format, as expected from

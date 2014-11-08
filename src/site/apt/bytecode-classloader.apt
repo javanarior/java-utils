@@ -9,7 +9,7 @@ Bytecode Classloader
   Sometimes it's necessary or more comfortably to generate classes. To use this classes, the classes must
 be loaded into to the JVM, for that you need a classloader. Usually the method ClassLoader#defineClass() is
 used for that purpose. But this Method has the scope protected, so you can't access it outside of the class hierarchy.
-For this reason the ByteCodeClassLoader exists. To load a class you need the byte code and the name of the class in the
+For this reason the ByteCodeClassLoader exists. To load a class you need the bytecode and the name of the class in the
 binary format  (JSL §13.1, {{{http://docs.oracle.com/javase/specs/jls/se7/html/jls-13.html#jls-13.1}}}), which means
 the full qualified class name, separated with dots ('.').
 
@@ -21,7 +21,7 @@ the full qualified class name, separated with dots ('.').
     ByteCodeClassLoader classLoader = ByteCodeClassLoader.getClassLoader();
 ----------------------------------------
 
-  Then your byte code could be loaded with
+  Then your bytecode could be loaded with
 
 ----------------------------------------
     classLoader.load(className, byteCode);
@@ -34,4 +34,4 @@ the full qualified class name, separated with dots ('.').
     classLoader.load(generatedClass);
 ----------------------------------------
 
-  GeneratedClass is a container objects which hold the class name and the byte code.
+  GeneratedClass is a container objects which hold the class name and the bytecode.
