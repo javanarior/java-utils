@@ -31,11 +31,11 @@ is defined in terms of the equals method.
   A class which extends the {{{./apidocs/de/javanarior/utils/compare/SpeakingComparableAdapter.html}SpeakingComparableAdapter}}
 could be written like
 
-%{include|snippet=class|source=src/test/java/de/javanarior/utils/compare/SpeakingComparableAdapterTest.java}
+%{include|set-first-line=1|snippet=class|source=src/test/java/de/javanarior/utils/compare/SpeakingComparableAdapterTest.java}
 
   To create a SpeakingComparable wrapper for a Comparable call the factory
 
-%{include|snippet=factory-call|source=src/test/java/de/javanarior/utils/SpeakingTest.java}
+%{include|set-first-line=1|snippet=factory-call|source=src/test/java/de/javanarior/utils/SpeakingTest.java}
 
 ~~* SpeakingComparator
 

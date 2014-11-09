@@ -17,14 +17,14 @@ the full qualified class name, separated with dots ('.').
 
   To get a instance of the Classloader you call
 
-%{include|set-first-line=1|snippet=getClassLoader|source=src/main/java/de/javanarior/utils/example/lang/ByteCodeClassLoaderExample.java}
+%{include|set-first-line=1|snippet=getClassLoader|source=src/example/java/de/javanarior/utils/example/lang/ByteCodeClassLoaderExample.java}
 
   Then your bytecode could be loaded with
 
-%{include|set-first-line=1|snippet=loadClass|source=src/main/java/de/javanarior/utils/example/lang/ByteCodeClassLoaderExample.java}
+%{include|set-first-line=1|snippet=loadClass|source=src/example/java/de/javanarior/utils/example/lang/ByteCodeClassLoaderExample.java}
 
   or with
 
-%{include|set-first-line=1|snippet-start-offset=0|snippet=loadClassWithContainer|source=src/main/java/de/javanarior/utils/example/lang/ByteCodeClassLoaderExample.java}
+%{include|set-first-line=1|snippet-start-offset=0|snippet=loadClassWithContainer|source=src/example/java/de/javanarior/utils/example/lang/ByteCodeClassLoaderExample.java}
 
   ByteCodeContainer is a container objects which hold the class name and the bytecode.

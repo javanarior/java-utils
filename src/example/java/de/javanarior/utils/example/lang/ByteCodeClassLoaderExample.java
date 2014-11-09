@@ -18,9 +18,6 @@ package de.javanarior.utils.example.lang;
 import de.javanarior.utils.lang.ByteCodeClassLoader;
 import de.javanarior.utils.lang.ByteCodeContainer;
 
-/**
- *
- */
 class ByteCodeClassLoaderExample {
 
     ByteCodeClassLoaderExample() throws Exception {
