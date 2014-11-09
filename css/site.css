@@ -1,1 +1,8 @@
-/* You can override this file with your own styles */
+html body.topBarDisabled * div.row-fluid * div.section div.section *.syntaxhighlighter.java table {
+        margin: 0.2em !important;
+    width: 99% !important;
+}
+
+.syntaxhighlighter table td.code {
+    vertical-align: top !important;
+}

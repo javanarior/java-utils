@@ -25,10 +25,10 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2014</copyright>
     <item>
-      <title>File: 7,
+      <title>File: 25,
              Errors: 0,
-             Warnings: 0,
-             Infos: 0
+             Warnings: 4,
+             Infos: 3
       </title>
             <link>http://javanarior.github.io/java-utils/checkstyle.html</link>
       <description>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compare.SpeakingComparable.java">de/javanarior/utils/compare/SpeakingComparable.java</a>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.lang.ByteCodeClassLoader.java">de/javanarior/utils/lang/ByteCodeClassLoader.java</a>
                 </td>
                 <td>
                   0
@@ -60,35 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compare.package-info.java">de/javanarior/utils/compare/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.package-info.java">de/javanarior/utils/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.SpeakingTest.java">de/javanarior/utils/SpeakingTest.java</a>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compiler.AbstractJavaInMemoryTest.java">de/javanarior/utils/compiler/AbstractJavaInMemoryTest.java</a>
                 </td>
                 <td>
                   0
@@ -116,6 +88,48 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compiler.MemoryClassLoader.java">de/javanarior/utils/compiler/MemoryClassLoader.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.package-info.java">de/javanarior/utils/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compare.SpeakingComparable.java">de/javanarior/utils/compare/SpeakingComparable.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compare.SpeakingComparableAdapterTest.java">de/javanarior/utils/compare/SpeakingComparableAdapterTest.java</a>
                 </td>
                 <td>
@@ -130,7 +144,245 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.lang.package-info.java">de/javanarior/utils/lang/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.lang.ByteCodeClassLoaderTest.java">de/javanarior/utils/lang/ByteCodeClassLoaderTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.SpeakingTest.java">de/javanarior/utils/SpeakingTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.tools.memorycompiler.TestMe.java">de/javanarior/tools/memorycompiler/TestMe.java</a>
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compiler.MemoryJavaSource.java">de/javanarior/utils/compiler/MemoryJavaSource.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compiler.ClassCompileException.java">de/javanarior/utils/compiler/ClassCompileException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compiler.MemoryJavaByteCode.java">de/javanarior/utils/compiler/MemoryJavaByteCode.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compiler.MemoryCompiler.java">de/javanarior/utils/compiler/MemoryCompiler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compiler.MemoryFileManager.java">de/javanarior/utils/compiler/MemoryFileManager.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compiler.MemoryJava.java">de/javanarior/utils/compiler/MemoryJava.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compare.package-info.java">de/javanarior/utils/compare/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compiler.MemoryCompilerTest.java">de/javanarior/utils/compiler/MemoryCompilerTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.Speaking.java">de/javanarior/utils/Speaking.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compiler.package-info.java">de/javanarior/utils/compiler/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.lang.ByteCodeContainer.java">de/javanarior/utils/lang/ByteCodeContainer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compiler.MemoryJavaByteCodeTest.java">de/javanarior/utils/compiler/MemoryJavaByteCodeTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compiler.MemoryClassLoaderTest.java">de/javanarior/utils/compiler/MemoryClassLoaderTest.java</a>
+                </td>
+                <td>
+                  2
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compiler.MemoryJavaTest.java">de/javanarior/utils/compiler/MemoryJavaTest.java</a>
                 </td>
                 <td>
                   0
