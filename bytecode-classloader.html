@@ -50,7 +50,7 @@
                     
                   <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 2014-11-09</li>
               <li id="projectVersion" class="pull-right">
-                    Version: 0.0.2-SNAPSHOT
+                    Version: 0.0.2
         </li>
             
                             </ul>
@@ -142,9 +142,9 @@
 <p>To get a instance of the Classloader you call</p><style type="text/css">
    @import url('attached-includes/css/shCoreDefault.css');
 </style>
-<div id="highlighter_278435" class="syntaxhighlighter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java plain">ByteCodeClassLoader classLoader = ByteCodeClassLoader.getClassLoader();</code></div></div></td></tr></tbody></table></div>
-<p>Then your bytecode could be loaded with</p><div id="highlighter_861036" class="syntaxhighlighter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java plain">Class&lt;?> classInstance = classLoader.load(className, byteCode); </code></div><div class="line number2 index1 alt1"><code class="java plain">classInstance.newInstance();</code></div></div></td></tr></tbody></table></div>
-<p>or with</p><div id="highlighter_77640" class="syntaxhighlighter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java plain">ByteCodeContainer generatedClass = AwesomeByteCodeGenerator.generate(); </code></div><div class="line number2 index1 alt1"><code class="java plain">classLoader.load(generatedClass);</code></div></div></td></tr></tbody></table></div>
+<div id="highlighter_967040" class="syntaxhighlighter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java plain">ByteCodeClassLoader classLoader = ByteCodeClassLoader.getClassLoader();</code></div></div></td></tr></tbody></table></div>
+<p>Then your bytecode could be loaded with</p><div id="highlighter_803506" class="syntaxhighlighter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java plain">Class&lt;?> classInstance = classLoader.load(className, byteCode);</code></div><div class="line number2 index1 alt1"><code class="java plain">classInstance.newInstance();</code></div></div></td></tr></tbody></table></div>
+<p>or with</p><div id="highlighter_492433" class="syntaxhighlighter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java plain">ByteCodeContainer generatedClass = AwesomeByteCodeGenerator.generate();</code></div><div class="line number2 index1 alt1"><code class="java plain">classLoader.load(generatedClass);</code></div></div></td></tr></tbody></table></div>
 <p>ByteCodeContainer is a container objects which hold the class name and the bytecode.</p></div></div>
                   </div>
             </div>
