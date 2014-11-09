@@ -27,6 +27,11 @@
 
     <custom>
         <fluidoSkin>
+            <googleSearch />
+            <ohloh>
+                <projectId>java-utils</projectId>
+                <widget>thin-badge</widget>
+            </ohloh>
             <copyrightClass>pull-right</copyrightClass>
             <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
             <breadcrumbDivider>|</breadcrumbDivider>
