@@ -42,7 +42,7 @@
 
     <properties>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <javanarior-build-resources.version>5</javanarior-build-resources.version>
+        <javanarior-build-resources.version>6</javanarior-build-resources.version>
     </properties>
 
 

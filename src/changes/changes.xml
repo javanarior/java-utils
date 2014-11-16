@@ -10,13 +10,20 @@
 
     <body>
 
-        <release version="0.0.2" description="Add Bytecode Classloader."
-            date="2014-11-09">
-            <action dev="Sven" date="2014-10-26">Add Bytecode Classloader.</action>
+        <release version="0.0.3" description="Add Reflection Utilities." date="2014-11-16">
+            <action dev="Sven" date="2014-11-16" type="add">
+                Add Reflection Utilities to invoke constructors.
+            </action>
         </release>
-        <release version="0.0.1" description="Initial release."
-            date="2014-10-12">
-            <action dev="Sven" date="2014-10-12">Initial release.</action>
+        <release version="0.0.2" description="Add Bytecode Classloader." date="2014-11-09">
+            <action dev="Sven" date="2014-10-26" type="add">
+                Add Bytecode Classloader.
+            </action>
+        </release>
+        <release version="0.0.1" description="Initial release." date="2014-10-12">
+            <action dev="Sven" date="2014-10-12" type="add">
+                Initial release.
+            </action>
         </release>
     </body>
 

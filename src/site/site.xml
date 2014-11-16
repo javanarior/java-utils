@@ -11,6 +11,7 @@
             <item name="Features" href="features.html" collapse="true">
                 <item name="Speaking Compare" href="speaking-compare.html" />
                 <item name="ByteCode ClassLoader" href="bytecode-classloader.html" />
+                <item name="Reflection Utilities" href="reflection-utilities.html" />
             </item>
         </menu>
         <menu ref="reports" />
