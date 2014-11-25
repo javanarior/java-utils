@@ -45,6 +45,12 @@ public class ByteCodeClassLoaderTest {
         Assert.assertNotNull(clazz);
     }
 
+    public void testLoadWithContainer() throws Exception {
+        ByteCodeContainer container = new ByteCodeContainer(CLASS_NAME, readByteCode());
+        Class<?> clazz = classLoader.load(container);
+        Assert.assertNotNull(clazz);
+    }
+
     public void testLoadAndRetrieve() throws Exception {
         Class<?> loaded = classLoader.load(CLASS_NAME, readByteCode());
         Class<?> retrieved = classLoader.loadClass(CLASS_NAME);

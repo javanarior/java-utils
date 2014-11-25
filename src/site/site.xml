@@ -17,6 +17,8 @@
         <menu ref="reports" />
     </body>
 
+    <googleAnalyticsAccountId>UA-56931930-3</googleAnalyticsAccountId>
+
     <version position="right" />
     <publishDate position="right" />
 
