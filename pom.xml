@@ -80,7 +80,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>1.9.5</version>
+            <version>1.10.17</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -179,14 +179,9 @@
                         <reports>
                             <report>dependencies</report>
                             <report>cim</report>
-                            <report>issue-tracking</report>
-                            <report>license</report>
-                            <report>scm</report>
                             <report>modules </report>
                             <report>dependency-info</report>
                             <report>dependency-management</report>
-                            <report>plugins </report>
-                            <report>summary</report>
                         </reports>
                     </reportSet>
                 </reportSets>
