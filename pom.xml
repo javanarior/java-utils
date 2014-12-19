@@ -5,7 +5,7 @@
     <parent>
         <groupId>de.javanarior</groupId>
         <artifactId>javanarior-oss-pom</artifactId>
-        <version>24</version>
+        <version>25</version>
     </parent>
 
     <groupId>de.javanarior.library</groupId>
@@ -166,10 +166,6 @@
 
     <reporting>
         <plugins>
-
-            <plugin>
-                <artifactId>maven-jxr-plugin</artifactId>
-            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
