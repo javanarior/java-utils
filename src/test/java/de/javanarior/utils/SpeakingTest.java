@@ -33,8 +33,8 @@ public class SpeakingTest {
         // START SNIPPET: factory-call
         SpeakingComparable<Integer> speakingComparable = Speaking.comparable(Integer.valueOf(1));
         // END SNIPPET: factory-call
-        Assert.assertTrue(speakingComparable.equalsTo(1));
-        Assert.assertFalse(speakingComparable.equalsTo(2));
+        Assert.assertTrue(speakingComparable.equalsTo(Integer.valueOf(1)));
+        Assert.assertFalse(speakingComparable.equalsTo(Integer.valueOf(2)));
     }
 
 }

@@ -38,10 +38,20 @@ public class ByteCodeContainer {
         this.byteCode = byteCode;
     }
 
+    /**
+     * Returns the class name for the byte code.
+     *
+     * @return class name in binary format
+     */
     public String getClassName() {
         return className;
     }
 
+    /**
+     * Returns the byte code for the class.
+     *
+     * @return byte code
+     */
     public byte[] getByteCode() {
         return byteCode;
     }

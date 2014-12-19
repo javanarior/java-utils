@@ -72,12 +72,12 @@ public final class ByteCodeClassLoader extends ClassLoader {
     /**
      * Load the class from a {@link ByteCodeContainer} container.
      *
-     * @param clazz
-     *            - to load
+     * @param container
+     *            - with class to load
      * @return class object
      */
-    public Class<?> load(ByteCodeContainer clazz) {
-        return load(clazz.getClassName(), clazz.getByteCode());
+    public Class<?> load(ByteCodeContainer container) {
+        return load(container.getClassName(), container.getByteCode());
     }
 
 }
