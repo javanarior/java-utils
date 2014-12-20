@@ -5,7 +5,7 @@
     <parent>
         <groupId>de.javanarior</groupId>
         <artifactId>javanarior-oss-pom</artifactId>
-        <version>19</version>
+        <version>27</version>
     </parent>
 
     <groupId>de.javanarior.library</groupId>
@@ -42,7 +42,7 @@
 
     <properties>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <javanarior-build-resources.version>7</javanarior-build-resources.version>
+        <javanarior-build-resources.version>9</javanarior-build-resources.version>
     </properties>
 
 
@@ -103,48 +103,6 @@
 
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.tinyjee.dim</groupId>
-                        <artifactId>doxia-include-macro</artifactId>
-                        <version>1.1</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-
-            <plugin>
-                <groupId>org.tinyjee.dim</groupId>
-                <artifactId>doxia-include-macro</artifactId>
-                <version>1.1</version>
-                <executions>
-                    <execution>
-                        <id>initialize-doxia-include-macro</id>
-                        <phase>pre-site</phase>
-                        <goals>
-                            <goal>initialize</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-changes-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-scm-publish-plugin</artifactId>
-                <configuration>
-                    <scmBranch>gh-pages</scmBranch>
-                    <checkinComment>Site checkin for ${project.name} ${project.version}</checkinComment>
-                    <dryRun>${dryRun}</dryRun>
-                </configuration>
-            </plugin>
-
-            <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <parallel>class</parallel>
@@ -173,7 +131,7 @@
                         <linkXref>true</linkXref>
                         <includeTests>true</includeTests>
                         <skipEmptyReport>false</skipEmptyReport>
-                        <targetJdk>${java.version.source}</targetJdk>
+                        <targetJdk>${java.version}</targetJdk>
                         <rulesets>
                             <ruleset>pmd/pmd.xml</ruleset>
                         </rulesets>
@@ -208,11 +166,6 @@
 
     <reporting>
         <plugins>
-
-            <plugin>
-                <artifactId>maven-jxr-plugin</artifactId>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId> maven-project-info-reports-plugin</artifactId>
@@ -221,14 +174,9 @@
                         <reports>
                             <report>dependencies</report>
                             <report>cim</report>
-                            <report>issue-tracking</report>
-                            <report>license</report>
-                            <report>scm</report>
                             <report>modules </report>
                             <report>dependency-info</report>
                             <report>dependency-management</report>
-                            <report>plugins </report>
-                            <report>summary</report>
                         </reports>
                     </reportSet>
                 </reportSets>
@@ -273,40 +221,6 @@
             </plugin>
 
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>taglist-maven-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <linkXRef>true</linkXRef>
-                    <tagListOptions>
-                        <tagClasses>
-                            <tagClass>
-                                <displayName>TODO</displayName>
-                                <tags>
-                                    <tag>
-                                        <matchString>fixme</matchString>
-                                        <matchType>ignoreCase</matchType>
-                                    </tag>
-                                    <tag>
-                                        <matchString>xxx</matchString>
-                                        <matchType>ignoreCase</matchType>
-                                    </tag>
-                                    <tag>
-                                        <matchString>todo</matchString>
-                                        <matchType>ignoreCase</matchType>
-                                    </tag>
-                                    <tag>
-                                        <matchString>nice</matchString>
-                                        <matchType>ignoreCase</matchType>
-                                    </tag>
-                                </tags>
-                            </tagClass>
-                        </tagClasses>
-                    </tagListOptions>
-                </configuration>
-            </plugin>
-
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
             </plugin>
@@ -315,16 +229,6 @@
                 <artifactId>maven-pmd-plugin</artifactId>
             </plugin>
 
-            <plugin>
-                <artifactId>maven-changes-plugin</artifactId>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>changes-report</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
         </plugins>
     </reporting>
 
@@ -333,69 +237,6 @@
 
 
     <profiles>
-
-        <profile>
-            <id>code-examples</id>
-            <activation>
-                <file>
-                    <exists>src/example</exists>
-                </file>
-            </activation>
-
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>build-helper-maven-plugin</artifactId>
-                            <executions>
-                                <execution>
-                                    <id>add-source</id>
-                                    <phase>generate-sources</phase>
-                                    <goals>
-                                        <goal>add-source</goal>
-                                    </goals>
-                                    <configuration>
-                                        <sources>
-                                            <source>src/example/java</source>
-                                        </sources>
-                                    </configuration>
-                                </execution>
-                            </executions>
-                        </plugin>
-                        <plugin>
-                            <artifactId>maven-jar-plugin</artifactId>
-                            <configuration>
-                                <excludes>
-                                    <exclude>**/example/**</exclude>
-                                </excludes>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <artifactId>maven-checkstyle-plugin</artifactId>
-                            <configuration>
-                                <excludes>**/example/**</excludes>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <artifactId>maven-pmd-plugin</artifactId>
-                            <configuration>
-                                <excludeRoots>
-                                    <excludeRoos>src/example/java</excludeRoos>
-                                </excludeRoots>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>findbugs-maven-plugin</artifactId>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-            </build>
-
-        </profile>
-
-
 
         <profile>
             <id>validate</id>
@@ -668,8 +509,8 @@
 
     <distributionManagement>
         <site>
-            <id>javanarior/vo-lib</id>
-            <url>scm:git:git@github.com:javanarior/${project.artifactId}.git</url>
+            <id>${github.username}/${project.artifactId}</id>
+            <url>scm:git:git@github.com:${github.username}/${project.artifactId}.git</url>
         </site>
         <repository>
             <id>bintray-javanarior-maven</id>

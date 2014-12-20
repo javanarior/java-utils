@@ -27,23 +27,25 @@ public final class Invoker {
     }
 
     /**
-     * Invoke the constructor from {@code toInstanciate} with the parameter
+     * Invoke the constructor from {@code toInstantiate} with the parameter
      * specified by {@code parameterTypes} and provides {@code parameterValues}
      * as parameters.
      *
-     * @param toInstanciate
+     * @param <T>
+     *            - type of class to instantiate
+     * @param toInstantiate
      *            - class object from which a new instance is to be created
      * @param argumentTypes
      *            - the parameter types of the constructor to use
      * @param argument
      *            - the values to pass to the constructor
-     * @return a new instance of toInstanciate
+     * @return a new instance of toInstantiate
      */
     @SuppressWarnings("unchecked")
-    public static <T> T invokeConstructor(Class<T> toInstanciate, Class<?>[] argumentTypes, Object[] argument) {
+    public static <T> T invokeConstructor(Class<T> toInstantiate, Class<?>[] argumentTypes, Object[] argument) {
         Constructor<?> constructor;
         try {
-            constructor = toInstanciate.getConstructor(argumentTypes);
+            constructor = toInstantiate.getConstructor(argumentTypes);
             return (T)constructor.newInstance(argument);
         } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException
                         | IllegalArgumentException | InvocationTargetException exception) {
@@ -54,237 +56,269 @@ public final class Invoker {
     }
 
     /**
-     * Invoke the default/non-arg constructor from {@code toInstanciate}.
+     * Invoke the default/non-arg constructor from {@code toInstantiate}.
      *
-     * @param toInstanciate
+     * @param <T>
+     *            - type of class to instantiate
+     * @param toInstantiate
      *            - class object from which a new instance is to be created
-     * @return a new instance of toInstanciate
+     * @return a new instance of toInstantiate
      */
-    public static <T> T invokeConstructor(Class<T> toInstanciate) {
+    public static <T> T invokeConstructor(Class<T> toInstantiate) {
         try {
-            return toInstanciate.newInstance();
+            return toInstantiate.newInstance();
         } catch (InstantiationException | IllegalAccessException exception) {
             throw new ReflectionException("Could not invoke default constructor, please check if accessable", exception);
         }
     }
 
     /**
-     * Invoke the constructor from {@code toInstanciate} with the parameter
+     * Invoke the constructor from {@code toInstantiate} with the parameter
      * specified by {@code parameterTypes} and provides {@code parameterValues}
      * as parameters.
      *
-     * @param toInstanciate
+     * @param <T>
+     *            - type of class to instantiate
+     * @param toInstantiate
      *            - class object from which a new instance is to be created
      * @param argumentType
      *            - the parameter type of the constructor to use
      * @param argument
      *            - the value to pass to the constructor
-     * @return a new instance of toInstanciate
+     * @return a new instance of toInstantiate
      */
-    public static <T> T invokeConstructor(Class<T> toInstanciate, Class<?> argumentType, Object argument) {
-        return invokeConstructor(toInstanciate, new Class[] { argumentType }, new Object[] { argument });
+    public static <T> T invokeConstructor(Class<T> toInstantiate, Class<?> argumentType, Object argument) {
+        return invokeConstructor(toInstantiate, new Class[] { argumentType }, new Object[] { argument });
     }
 
     /**
-     * Invoke the int constructor from {@code toInstanciate} with
+     * Invoke the int constructor from {@code toInstantiate} with
      * {@code parameterValues} as parameters.
      *
-     * @param toInstanciate
+     * @param <T>
+     *            - type of class to instantiate
+     * @param toInstantiate
      *            - class object from which a new instance is to be created
      * @param argument
      *            - the value to pass to the constructor
-     * @return a new instance of toInstanciate
+     * @return a new instance of toInstantiate
      */
-    public static <T> T invokeConstructor(Class<T> toInstanciate, int argument) {
-        return invokeConstructor(toInstanciate, Integer.valueOf(argument));
+    public static <T> T invokeConstructor(Class<T> toInstantiate, int argument) {
+        return invokeConstructor(toInstantiate, Integer.valueOf(argument));
     }
 
     /**
-     * Invoke the Integer constructor from {@code toInstanciate} with
+     * Invoke the Integer constructor from {@code toInstantiate} with
      * {@code parameterValues} as parameters.
      *
-     * @param toInstanciate
+     * @param <T>
+     *            - type of class to instantiate
+     * @param toInstantiate
      *            - class object from which a new instance is to be created
      * @param argument
      *            - the value to pass to the constructor
-     * @return a new instance of toInstanciate
+     * @return a new instance of toInstantiate
      */
-    public static <T> T invokeConstructor(Class<T> toInstanciate, Integer argument) {
-        return invokeConstructor(toInstanciate, new Class[] { Integer.TYPE },
+    public static <T> T invokeConstructor(Class<T> toInstantiate, Integer argument) {
+        return invokeConstructor(toInstantiate, new Class[] { Integer.TYPE },
                         new Integer[] { argument });
     }
 
     /**
-     * Invoke the boolean constructor from {@code toInstanciate} with
+     * Invoke the boolean constructor from {@code toInstantiate} with
      * {@code parameterValues} as parameter.
      *
-     * @param toInstanciate
+     * @param <T>
+     *            - type of class to instantiate
+     * @param toInstantiate
      *            - class object from which a new instance is to be created
      * @param argument
      *            - the value to pass to the constructor
-     * @return a new instance of toInstanciate
+     * @return a new instance of toInstantiate
      */
-    public static <T> T invokeConstructor(Class<T> toInstanciate, boolean argument) {
-        return invokeConstructor(toInstanciate, Boolean.valueOf(argument));
+    public static <T> T invokeConstructor(Class<T> toInstantiate, boolean argument) {
+        return invokeConstructor(toInstantiate, Boolean.valueOf(argument));
     }
 
     /**
-     * Invoke the Boolean constructor from {@code toInstanciate} with
+     * Invoke the Boolean constructor from {@code toInstantiate} with
      * {@code parameterValues} as parameter.
      *
-     * @param toInstanciate
+     * @param <T>
+     *            - type of class to instantiate
+     * @param toInstantiate
      *            - class object from which a new instance is to be created
      * @param argument
      *            - the value to pass to the constructor
-     * @return a new instance of toInstanciate
+     * @return a new instance of toInstantiate
      */
-    public static <T> T invokeConstructor(Class<T> toInstanciate, Boolean argument) {
-        return invokeConstructor(toInstanciate, new Class[] { Boolean.TYPE },
+    public static <T> T invokeConstructor(Class<T> toInstantiate, Boolean argument) {
+        return invokeConstructor(toInstantiate, new Class[] { Boolean.TYPE },
                         new Boolean[] { argument });
     }
 
     /**
-     * Invoke the byte constructor from {@code toInstanciate} with
+     * Invoke the byte constructor from {@code toInstantiate} with
      * {@code parameterValues} as parameter.
      *
-     * @param toInstanciate
+     * @param <T>
+     *            - type of class to instantiate
+     * @param toInstantiate
      *            - class object from which a new instance is to be created
      * @param argument
      *            - the value to pass to the constructor
-     * @return a new instance of toInstanciate
+     * @return a new instance of toInstantiate
      */
-    public static <T> T invokeConstructor(Class<T> toInstanciate, byte argument) {
-        return invokeConstructor(toInstanciate, Byte.valueOf(argument));
+    public static <T> T invokeConstructor(Class<T> toInstantiate, byte argument) {
+        return invokeConstructor(toInstantiate, Byte.valueOf(argument));
     }
 
     /**
-     * Invoke the Byte constructor from {@code toInstanciate} with
+     * Invoke the Byte constructor from {@code toInstantiate} with
      * {@code parameterValues} as parameter.
      *
-     * @param toInstanciate
+     * @param <T>
+     *            - type of class to instantiate
+     * @param toInstantiate
      *            - class object from which a new instance is to be created
      * @param argument
      *            - the value to pass to the constructor
-     * @return a new instance of toInstanciate
+     * @return a new instance of toInstantiate
      */
-    public static <T> T invokeConstructor(Class<T> toInstanciate, Byte argument) {
-        return invokeConstructor(toInstanciate, new Class[] { Byte.TYPE },
+    public static <T> T invokeConstructor(Class<T> toInstantiate, Byte argument) {
+        return invokeConstructor(toInstantiate, new Class[] { Byte.TYPE },
                         new Byte[] { argument });
     }
 
     /**
-     * Invoke the char constructor from {@code toInstanciate} with
+     * Invoke the char constructor from {@code toInstantiate} with
      * {@code parameterValues} as parameter.
      *
-     * @param toInstanciate
+     * @param <T>
+     *            - type of class to instantiate
+     * @param toInstantiate
      *            - class object from which a new instance is to be created
      * @param argument
      *            - the value to pass to the constructor
-     * @return a new instance of toInstanciate
+     * @return a new instance of toInstantiate
      */
-    public static <T> T invokeConstructor(Class<T> toInstanciate, char argument) {
-        return invokeConstructor(toInstanciate, Character.valueOf(argument));
+    public static <T> T invokeConstructor(Class<T> toInstantiate, char argument) {
+        return invokeConstructor(toInstantiate, Character.valueOf(argument));
     }
 
     /**
-     * Invoke the Character constructor from {@code toInstanciate} with
+     * Invoke the Character constructor from {@code toInstantiate} with
      * {@code parameterValues} as parameter.
      *
-     * @param toInstanciate
+     * @param <T>
+     *            - type of class to instantiate
+     * @param toInstantiate
      *            - class object from which a new instance is to be created
      * @param argument
      *            - the value to pass to the constructor
-     * @return a new instance of toInstanciate
+     * @return a new instance of toInstantiate
      */
-    public static <T> T invokeConstructor(Class<T> toInstanciate, Character argument) {
-        return invokeConstructor(toInstanciate, new Class[] { Character.TYPE },
+    public static <T> T invokeConstructor(Class<T> toInstantiate, Character argument) {
+        return invokeConstructor(toInstantiate, new Class[] { Character.TYPE },
                         new Character[] { argument });
     }
 
     /**
-     * Invoke the double constructor from {@code toInstanciate} with
+     * Invoke the double constructor from {@code toInstantiate} with
      * {@code parameterValues} as parameter.
      *
-     * @param toInstanciate
+     * @param <T>
+     *            - type of class to instantiate
+     * @param toInstantiate
      *            - class object from which a new instance is to be created
      * @param argument
      *            - the value to pass to the constructor
-     * @return a new instance of toInstanciate
+     * @return a new instance of toInstantiate
      */
-    public static <T> T invokeConstructor(Class<T> toInstanciate, double argument) {
-        return invokeConstructor(toInstanciate, Double.valueOf(argument));
+    public static <T> T invokeConstructor(Class<T> toInstantiate, double argument) {
+        return invokeConstructor(toInstantiate, Double.valueOf(argument));
     }
 
     /**
-     * Invoke the Double constructor from {@code toInstanciate} with
+     * Invoke the Double constructor from {@code toInstantiate} with
      * {@code parameterValues} as parameter.
      *
-     * @param toInstanciate
+     * @param <T>
+     *            - type of class to instantiate
+     * @param toInstantiate
      *            - class object from which a new instance is to be created
      * @param argument
      *            - the value to pass to the constructor
-     * @return a new instance of toInstanciate
+     * @return a new instance of toInstantiate
      */
-    public static <T> T invokeConstructor(Class<T> toInstanciate, Double argument) {
-        return invokeConstructor(toInstanciate, new Class[] { Double.TYPE },
+    public static <T> T invokeConstructor(Class<T> toInstantiate, Double argument) {
+        return invokeConstructor(toInstantiate, new Class[] { Double.TYPE },
                         new Double[] { argument });
     }
 
     /**
-     * Invoke the long constructor from {@code toInstanciate} with
+     * Invoke the long constructor from {@code toInstantiate} with
      * {@code parameterValues} as parameter.
      *
-     * @param toInstanciate
+     * @param <T>
+     *            - type of class to instantiate
+     * @param toInstantiate
      *            - class object from which a new instance is to be created
      * @param argument
      *            - the value to pass to the constructor
-     * @return a new instance of toInstanciate
+     * @return a new instance of toInstantiate
      */
-    public static <T> T invokeConstructor(Class<T> toInstanciate, long argument) {
-        return invokeConstructor(toInstanciate, Long.valueOf(argument));
+    public static <T> T invokeConstructor(Class<T> toInstantiate, long argument) {
+        return invokeConstructor(toInstantiate, Long.valueOf(argument));
     }
 
     /**
-     * Invoke the Long constructor from {@code toInstanciate} with
+     * Invoke the Long constructor from {@code toInstantiate} with
      * {@code parameterValues} as parameter.
      *
-     * @param toInstanciate
+     * @param <T>
+     *            - type of class to instantiate
+     * @param toInstantiate
      *            - class object from which a new instance is to be created
      * @param argument
      *            - the value to pass to the constructor
-     * @return a new instance of toInstanciate
+     * @return a new instance of toInstantiate
      */
-    public static <T> T invokeConstructor(Class<T> toInstanciate, Long argument) {
-        return invokeConstructor(toInstanciate, new Class[] { Long.TYPE },
+    public static <T> T invokeConstructor(Class<T> toInstantiate, Long argument) {
+        return invokeConstructor(toInstantiate, new Class[] { Long.TYPE },
                         new Long[] { argument });
     }
 
     /**
-     * Invoke the short constructor from {@code toInstanciate} with
+     * Invoke the short constructor from {@code toInstantiate} with
      * {@code parameterValues} as parameter.
      *
-     * @param toInstanciate
+     * @param <T>
+     *            - type of class to instantiate
+     * @param toInstantiate
      *            - class object from which a new instance is to be created
      * @param argument
      *            - the value to pass to the constructor
-     * @return a new instance of toInstanciate
+     * @return a new instance of toInstantiate
      */
-    public static <T> T invokeConstructor(Class<T> toInstanciate, short argument) {
-        return invokeConstructor(toInstanciate, Short.valueOf(argument));
+    public static <T> T invokeConstructor(Class<T> toInstantiate, short argument) {
+        return invokeConstructor(toInstantiate, Short.valueOf(argument));
     }
 
     /**
-     * Invoke the Short constructor from {@code toInstanciate} with
+     * Invoke the Short constructor from {@code toInstantiate} with
      * {@code parameterValues} as parameter.
      *
-     * @param toInstanciate
+     * @param <T>
+     *            - type of class to instantiate
+     * @param toInstantiate
      *            - class object from which a new instance is to be created
      * @param argument
      *            - the value to pass to the constructor
-     * @return a new instance of toInstanciate
+     * @return a new instance of toInstantiate
      */
-    public static <T> T invokeConstructor(Class<T> toInstanciate, Short argument) {
-        return invokeConstructor(toInstanciate, new Class[] { Short.TYPE },
+    public static <T> T invokeConstructor(Class<T> toInstantiate, Short argument) {
+        return invokeConstructor(toInstantiate, new Class[] { Short.TYPE },
                         new Short[] { argument });
     }
 
