@@ -10,6 +10,11 @@
 
     <body>
 
+        <release version="0.0.4" description="Add Reflection Utilities." date="2015-11-21">
+            <action dev="Sven" date="2014-11-16" type="add">
+                Add Reflection Utilities to retrieve values from Annotation.
+            </action>
+        </release>
         <release version="0.0.3" description="Add Reflection Utilities." date="2014-12-13">
             <action dev="Sven" date="2014-11-16" type="add">
                 Add Reflection Utilities to invoke constructors.

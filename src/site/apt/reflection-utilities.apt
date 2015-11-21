@@ -10,4 +10,6 @@ Reflection Utilities
 
   * {{{./apidocs/de/javanarior/utils/lang/reflect/Invoker.html} Invoker}}: Static methods to invoke constructors of class objects.
 
+  * {{{./apidocs/de/javanarior/utils/lang/reflect/Retrive.html} Retrieve}}: Static methods to retrieve values of annotations.
+
 []
