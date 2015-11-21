@@ -36,17 +36,18 @@ public final class Retrieve {
      * {@code annationClass} on {@code annotatedClass}.
      * In case of error a {@linkplain ReflectionException} is thrown.
      *
-     * @param annotatedClass
-     *            - the class with the Annotation
      * @param annotationClass
      *            - the class of the Annotation
-     * @param <T>  - a annotation class
+     * @param <T>
+     *            - a annotation class
      * @param attributeName
      *            - name of the attribute
+     * @param annotatedClass
+     *            - the class with the Annotation
      * @return value of the annotation attribute
      */
-    public static <T extends Annotation> Object annotationValueOnClass(Class<?> annotatedClass,
-                    Class<T> annotationClass, String attributeName) {
+    public static <T extends Annotation> Object annotationValueOnClass(Class<T> annotationClass, String attributeName,
+                    Class<?> annotatedClass) {
         try {
             T annotation = annotatedClass.getAnnotation(annotationClass);
             if (annotation == null) {
@@ -67,17 +68,17 @@ public final class Retrieve {
      * {@code annationClass} on {@code annotatedClass}.
      * In case of error a {@linkplain ReflectionException} is thrown.
      *
-     * @param annotatedClass
-     *            - the class with the Annotation
      * @param annotationClass
      *            - the class of the Annotation
-     * @param <T>  - a annotation class
+     * @param <T>
+     *            - a annotation class
+     * @param annotatedClass
+     *            - the class with the Annotation
      * @return value of the annotation attribute
      */
-    public static <T extends Annotation> Object annotationValueOnClass(Class<?> annotatedClass, Class<T> annotationClass) {
-        return annotationValueOnClass(annotatedClass, annotationClass, "value");
+    public static <T extends Annotation> Object annotationValueOnClass(Class<T> annotationClass, Class<?> annotatedClass) {
+        return annotationValueOnClass(annotationClass, "value", annotatedClass);
     }
-
 
     /**
      * Retrieve the value of an {@linkplain Annotation} on a Method.
@@ -87,7 +88,8 @@ public final class Retrieve {
      *
      * @param annotationClass
      *            - the class of the Annotation
-     * @param <T>  - a annotation class
+     * @param <T>
+     *            - a annotation class
      * @param methodWithAnnotation
      *            - method with annotation
      * @param attributeName
@@ -115,21 +117,25 @@ public final class Retrieve {
      * {@code classWithMethod}.
      * In case of error a {@linkplain ReflectionException} is thrown.
      *
+     * @param annotationClass
+     *            - the class of the Annotation
+     * @param <T>
+     *            - a annotation class
+     * @param attributeName
+     *            - name of the attribute
      * @param classWithMethod
      *            - class with the method
      * @param methodName
      *            - name of method with the annotation
-     * @param annotationClass
-     *            - the class of the Annotation
-     * @param <T>  - a annotation class
-     * @param attributeName
-     *            - name of the attribute
+     * @param parameterTypes
+     *            - parameter types of {@code methodName}
      * @return value of the annotation attribute
      */
-    public static <T extends Annotation> Object annotationValueOnMethod(Class<?> classWithMethod, String methodName,
-                    Class<T> annotationClass, String attributeName) {
+    public static <T extends Annotation> Object annotationValueOnMethod(Class<T> annotationClass, String attributeName,
+                    Class<?> classWithMethod, String methodName, Class<?>... parameterTypes) {
         try {
-            return annotationValueOnMethod(annotationClass, getMethod(classWithMethod, methodName), attributeName);
+            return annotationValueOnMethod(annotationClass, getMethod(classWithMethod, methodName, parameterTypes),
+                            attributeName);
         } catch (SecurityException exception) {
             throw new ReflectionException(exception);
         }
@@ -144,7 +150,8 @@ public final class Retrieve {
      *
      * @param annotationClass
      *            - the class of the Annotation
-     * @param <T>  - a annotation class
+     * @param <T>
+     *            - a annotation class
      * @param method
      *            - the method with the Annotation
      * @return value of the annotation attribute
@@ -160,19 +167,22 @@ public final class Retrieve {
      * {@code annationClass} of {@code methodName} of {@code annotatedClass}.
      * In case of error a {@linkplain ReflectionException} is thrown.
      *
+     * @param annotationClass
+     *            - the class of the Annotation
+     * @param <T>
+     *            - a annotation class
      * @param classWithMethod
      *            - class with method
      * @param methodName
      *            - name of method with annotation
-     * @param annotationClass
-     *            - the class of the Annotation
-     * @param <T>  - a annotation class
+     * @param parameterTypes
+     *            - parameter types of {@code methodName}
      * @return value of the annotation attribute
      */
-    public static <T extends Annotation> Object annotationValueOnMethod(Class<?> classWithMethod, String methodName,
-                    Class<T> annotationClass) {
+    public static <T extends Annotation> Object annotationValueOnMethod(Class<T> annotationClass,
+                    Class<?> classWithMethod, String methodName, Class<?>... parameterTypes) {
         try {
-            return annotationValueOnMethod(annotationClass, getMethod(classWithMethod, methodName));
+            return annotationValueOnMethod(annotationClass, getMethod(classWithMethod, methodName, parameterTypes));
         } catch (SecurityException exception) {
             throw new ReflectionException(exception);
         }
@@ -180,10 +190,15 @@ public final class Retrieve {
 
 
 
-    private static Method getMethod(Class<?> annotatedClass, String methodName) {
+    private static Method getMethod(Class<?> annotatedClass, String methodName, Class<?>... parameterTypes) {
         try {
-            return annotatedClass.getMethod(methodName);
+            return annotatedClass.getMethod(methodName, parameterTypes);
         } catch (NoSuchMethodException exception) {
+            for (Method method : annotatedClass.getDeclaredMethods()) {
+                if (method.getName().equals(methodName)) {
+                    return method;
+                }
+            }
             throw new ReflectionException("Method name '" + methodName + "' not found in Class '"
                             + annotatedClass.getCanonicalName() + "'", exception);
         }

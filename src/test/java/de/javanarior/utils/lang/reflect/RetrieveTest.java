@@ -24,32 +24,32 @@ import javax.annotation.Resource;
 
 import org.testng.annotations.Test;
 
-@Test(alwaysRun = true)
+@Resource(name = "RetrieveTest")
 @Testeria("attributeValue")
 public class RetrieveTest {
 
     @Test
     public void testAnnotationValueOnClass() {
-        Object attributeValue = Retrieve.annotationValueOnClass(RetrieveTest.class, Test.class, "alwaysRun");
+        Object attributeValue = Retrieve.annotationValueOnClass(Resource.class, "name", RetrieveTest.class);
         assertThat(attributeValue, notNullValue());
-        assertThat((Boolean)attributeValue, is(Boolean.TRUE));
+        assertThat((String)attributeValue, equalTo("RetrieveTest"));
     }
 
     @Test
     public void testAnnotationValueOnClassWithWrongNamedAttribute() {
         try {
-            Retrieve.annotationValueOnClass(RetrieveTest.class, Test.class, "wrongName");
+            Retrieve.annotationValueOnClass(Resource.class, "wrongName", RetrieveTest.class);
             assertThat("ReflectionException is expected", false);
         } catch (ReflectionException exception) {
             assertThat("ReflectionException is thrown", true);
             assertThat(exception.getMessage(),
-                            equalTo("Attribute 'wrongName' not found on 'org.testng.annotations.Test'"));
+                            equalTo("Attribute 'wrongName' not found on 'javax.annotation.Resource'"));
         }
     }
 
     @Test
     public void testAnnotationValueOnClassWithDefault() {
-        Object attributeValue = Retrieve.annotationValueOnClass(RetrieveTest.class, Testeria.class);
+        Object attributeValue = Retrieve.annotationValueOnClass(Testeria.class, RetrieveTest.class);
         assertThat(attributeValue, notNullValue());
         assertThat((String)attributeValue, is("attributeValue"));
     }
@@ -57,41 +57,81 @@ public class RetrieveTest {
     @Test
     public void testAnnotationValueOnClassWithDefaultAnnotationIsMissing() {
         try {
-            Retrieve.annotationValueOnClass(RetrieveTest.class, Resource.class);
+            Retrieve.annotationValueOnClass(Test.class, RetrieveTest.class);
         } catch (ReflectionException exception) {
             assertThat("ReflectionException is thrown", true);
             assertThat(exception.getMessage(),
                             /* CHECKSTYLE:OFF */
-                            equalTo("Annotation 'interface javax.annotation.Resource' not found on Class 'de.javanarior.utils.lang.reflect.RetrieveTest'"));
+                            equalTo("Annotation 'interface org.testng.annotations.Test' not found on Class 'de.javanarior.utils.lang.reflect.RetrieveTest'"));
             /* CHECKSTYLE:ON */
         }
     }
 
     @Test(alwaysRun = true)
     public void testAnnotationValueOnMethod() {
-        Object attributeValue = Retrieve.annotationValueOnMethod(RetrieveTest.class, "testAnnotationValueOnMethod",
-                        Test.class,
-                        "alwaysRun");
+        Object attributeValue = Retrieve.annotationValueOnMethod(Test.class, "alwaysRun", RetrieveTest.class,
+                        "testAnnotationValueOnMethod");
         assertThat(attributeValue, notNullValue());
         assertThat((Boolean)attributeValue, is(Boolean.TRUE));
     }
 
+    @Test
+    public void testAnnotationValueOnMethodWithParameter() {
+        Object attributeValue = Retrieve.annotationValueOnMethod(Resource.class, "name", RetrieveTest.class,
+                        "methodForTestingPurpuse");
+        assertThat(attributeValue, notNullValue());
+        assertThat((String)attributeValue, equalTo("attributeValueWithParameter"));
+    }
+
+    @Resource(name = "attributeValueWithParameter")
+    public void methodForTestingPurpuse(String unused) {
+        /* Do nothing */
+    }
+
+    @Test
+    public void testAnnotationValueOnMethodWithParameterPolymorphismString() {
+        Object attributeValue = Retrieve.annotationValueOnMethod(Resource.class, "name", RetrieveTest.class,
+                        "methodForTestingPurpusePolymorphism", String.class);
+        assertThat(attributeValue, notNullValue());
+        assertThat((String)attributeValue, equalTo("attributeValue"));
+    }
+
+    @Test
+    public void testAnnotationValueOnMethodWithParameterPolymorphismInteger() {
+        Object attributeValue = Retrieve.annotationValueOnMethod(Resource.class, "name", RetrieveTest.class,
+                        "methodForTestingPurpusePolymorphism", Integer.class);
+        assertThat(attributeValue, notNullValue());
+        assertThat((String)attributeValue, equalTo("attributeValueInteger"));
+    }
+
+    @Resource(name = "attributeValue")
+    public void methodForTestingPurpusePolymorphism(String unused) {
+        /* Do nothing */
+    }
+
+    @Resource(name = "attributeValueInteger")
+    public void methodForTestingPurpusePolymorphism(int unused) {
+        /* Do nothing */
+    }
+
+    @Test
     public void testAnnotationValueOnMethodAnnotationIsMissing() {
         try {
-            Retrieve.annotationValueOnMethod(RetrieveTest.class, "testAnnotationValueOnMethodAnnotationIsMissing",
-                            Test.class);
+            Retrieve.annotationValueOnMethod(Resource.class, RetrieveTest.class,
+                            "testAnnotationValueOnMethodAnnotationIsMissing");
         } catch (ReflectionException exception) {
             assertThat("ReflectionException is thrown", true);
             assertThat(exception.getMessage(),
                             /* CHECKSTYLE:OFF */
-                            equalTo("Annotation 'interface org.testng.annotations.Test' not found on Method 'public void de.javanarior.utils.lang.reflect.RetrieveTest.testAnnotationValueOnMethodAnnotationIsMissing()'"));
+                            equalTo("Annotation 'interface javax.annotation.Resource' not found on Method 'public void de.javanarior.utils.lang.reflect.RetrieveTest.testAnnotationValueOnMethodAnnotationIsMissing()'"));
             /* CHECKSTYLE:ON */
         }
     }
 
+    @Test
     public void testAnnotationValueOnMethodWithWrongMethodName() {
         try {
-            Retrieve.annotationValueOnMethod(RetrieveTest.class, "testWrongName", Test.class, "alwaysRun");
+            Retrieve.annotationValueOnMethod(Test.class, "alwaysRun", RetrieveTest.class, "testWrongName");
             assertThat("ReflectionException is expected", false);
         } catch (ReflectionException exception) {
             assertThat("ReflectionException is thrown", true);
@@ -102,9 +142,10 @@ public class RetrieveTest {
         }
     }
 
+    @Test
     public void testAnnotationValueOnMethodWithWrongAttributeName() {
         try {
-            Retrieve.annotationValueOnMethod(RetrieveTest.class, "testAnnotationValueOnMethod", Test.class, "wrongName");
+            Retrieve.annotationValueOnMethod(Test.class, "wrongName", RetrieveTest.class, "testAnnotationValueOnMethod");
             assertThat("ReflectionException is expected", false);
         } catch (ReflectionException exception) {
             assertThat("ReflectionException is thrown", true);
@@ -116,8 +157,8 @@ public class RetrieveTest {
     @Test
     @Testeria("attributeValue")
     public void testAnnotationValueOnMethodWithDefault() {
-        Object attributeValue = Retrieve.annotationValueOnMethod(RetrieveTest.class,
-                        "testAnnotationValueOnMethodWithDefault", Testeria.class);
+        Object attributeValue = Retrieve.annotationValueOnMethod(Testeria.class, RetrieveTest.class,
+                        "testAnnotationValueOnMethodWithDefault");
         assertThat(attributeValue, notNullValue());
         assertThat((String)attributeValue, is("attributeValue"));
     }
@@ -126,7 +167,7 @@ public class RetrieveTest {
     @Testeria("attributeValue")
     public void testAnnotationValueOnMethodWrongMethodName() {
         try {
-            Retrieve.annotationValueOnMethod(RetrieveTest.class, "wrongMethodName", Testeria.class);
+            Retrieve.annotationValueOnMethod(Testeria.class, RetrieveTest.class, "wrongMethodName");
             assertThat("ReflectionException is expected", false);
         } catch (ReflectionException exception) {
             assertThat("ReflectionException is thrown", true);
