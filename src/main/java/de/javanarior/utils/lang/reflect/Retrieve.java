@@ -51,7 +51,7 @@ public final class Retrieve {
         try {
             T annotation = annotatedClass.getAnnotation(annotationClass);
             if (annotation == null) {
-                throw new ReflectionException("Annotation '" + annotationClass + "' not found on Class '"
+                throw new ReflectionException("Annotation '" + annotationClass + "' not found in Class '"
                                 + annotatedClass.getCanonicalName() + "'");
             }
             return invokeAnnotation(attributeName, annotation);
@@ -134,7 +134,7 @@ public final class Retrieve {
     public static <T extends Annotation> Object annotationValueOnMethod(Class<T> annotationClass, String attributeName,
                     Class<?> classWithMethod, String methodName, Class<?>... parameterTypes) {
         try {
-            return annotationValueOnMethod(annotationClass, getMethod(classWithMethod, methodName, parameterTypes),
+            return annotationValueOnMethod(annotationClass, findMethod(classWithMethod, methodName, parameterTypes),
                             attributeName);
         } catch (SecurityException exception) {
             throw new ReflectionException(exception);
@@ -182,15 +182,33 @@ public final class Retrieve {
     public static <T extends Annotation> Object annotationValueOnMethod(Class<T> annotationClass,
                     Class<?> classWithMethod, String methodName, Class<?>... parameterTypes) {
         try {
-            return annotationValueOnMethod(annotationClass, getMethod(classWithMethod, methodName, parameterTypes));
+            return annotationValueOnMethod(annotationClass, findMethod(classWithMethod, methodName, parameterTypes));
         } catch (SecurityException exception) {
             throw new ReflectionException(exception);
         }
     }
 
+    public static <T extends Annotation> Object annotationValueOnParameter(Class<T> annotationClass, String attributeName, Class<?> classWithMethod, String methodNameWithParamerter, String parameterName, Class<?>... parameterTypes) {
+        Method method = findMethod(classWithMethod, methodNameWithParamerter, parameterTypes);
+        for (Annotation[] annotations : method.getParameterAnnotations()) {
+            for (Annotation annotation : annotations) {
+                if (annotation.annotationType().isAssignableFrom(annotationClass)) {
+                    return invokeAnnotation(attributeName, annotation);
+                }
+            }
+        }
+        throw new ReflectionException("Annotation '" + annotationClass.getCanonicalName() + "' not found in Parameter list of Method '" + method + "'");
+    }
+
+    public static <T extends Annotation> Object annotationValueOnParameter(Class<T> annotationClass, Class<?> classWithMethod, String methodNameWithParamerter, String parameterName, Class<?>... parameterTypes) {
+        return annotationValueOnParameter(annotationClass, "value", classWithMethod, methodNameWithParamerter, parameterName, parameterTypes);
+    }
 
 
-    private static Method getMethod(Class<?> annotatedClass, String methodName, Class<?>... parameterTypes) {
+
+
+
+    private static Method findMethod(Class<?> annotatedClass, String methodName, Class<?>... parameterTypes) {
         try {
             return annotatedClass.getMethod(methodName, parameterTypes);
         } catch (NoSuchMethodException exception) {

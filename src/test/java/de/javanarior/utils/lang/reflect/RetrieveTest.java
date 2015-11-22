@@ -61,9 +61,8 @@ public class RetrieveTest {
         } catch (ReflectionException exception) {
             assertThat("ReflectionException is thrown", true);
             assertThat(exception.getMessage(),
-                            /* CHECKSTYLE:OFF */
-                            equalTo("Annotation 'interface org.testng.annotations.Test' not found on Class 'de.javanarior.utils.lang.reflect.RetrieveTest'"));
-            /* CHECKSTYLE:ON */
+                            equalTo("Annotation 'interface org.testng.annotations.Test' not found in"
+                                            + " Class 'de.javanarior.utils.lang.reflect.RetrieveTest'"));
         }
     }
 
@@ -91,26 +90,26 @@ public class RetrieveTest {
     @Test
     public void testAnnotationValueOnMethodWithParameterPolymorphismString() {
         Object attributeValue = Retrieve.annotationValueOnMethod(Resource.class, "name", RetrieveTest.class,
-                        "methodForTestingPurpusePolymorphism", String.class);
+                        "methodForTestingPurposePolymorphism", String.class);
         assertThat(attributeValue, notNullValue());
-        assertThat((String)attributeValue, equalTo("attributeValue"));
+        assertThat((String)attributeValue, equalTo("attributeValueString"));
     }
 
     @Test
     public void testAnnotationValueOnMethodWithParameterPolymorphismInteger() {
         Object attributeValue = Retrieve.annotationValueOnMethod(Resource.class, "name", RetrieveTest.class,
-                        "methodForTestingPurpusePolymorphism", Integer.class);
+                        "methodForTestingPurposePolymorphism", Integer.class);
         assertThat(attributeValue, notNullValue());
         assertThat((String)attributeValue, equalTo("attributeValueInteger"));
     }
 
-    @Resource(name = "attributeValue")
-    public void methodForTestingPurpusePolymorphism(String unused) {
+    @Resource(name = "attributeValueString")
+    public void methodForTestingPurposePolymorphism(String unused) {
         /* Do nothing */
     }
 
     @Resource(name = "attributeValueInteger")
-    public void methodForTestingPurpusePolymorphism(int unused) {
+    public void methodForTestingPurposePolymorphism(int unused) {
         /* Do nothing */
     }
 
@@ -122,9 +121,9 @@ public class RetrieveTest {
         } catch (ReflectionException exception) {
             assertThat("ReflectionException is thrown", true);
             assertThat(exception.getMessage(),
-                            /* CHECKSTYLE:OFF */
-                            equalTo("Annotation 'interface javax.annotation.Resource' not found on Method 'public void de.javanarior.utils.lang.reflect.RetrieveTest.testAnnotationValueOnMethodAnnotationIsMissing()'"));
-            /* CHECKSTYLE:ON */
+                            equalTo("Annotation 'interface javax.annotation.Resource' not found on Method "
+                                            + "'public void de.javanarior.utils.lang.reflect."
+                                            + "RetrieveTest.testAnnotationValueOnMethodAnnotationIsMissing()'"));
         }
     }
 
@@ -173,9 +172,35 @@ public class RetrieveTest {
             assertThat("ReflectionException is thrown", true);
             assertThat(exception.getMessage(),
                             /* CHECKSTYLE:OFF */
-                            equalTo("Method name 'wrongMethodName' not found in Class 'de.javanarior.utils.lang.reflect.RetrieveTest'"));
+                            equalTo("Method name 'wrongMethodName' not found in "
+                                            + "Class 'de.javanarior.utils.lang.reflect.RetrieveTest'"));
             /* CHECKSTYLE:ON */
         }
     }
 
+    @Test
+    public void testAnnotationValueOnParameter() {
+        Object annotationValueOnParameter = Retrieve.annotationValueOnParameter(Testeria.class, "value", RetrieveTest.class, "methodForTestingPurpuseParameter", "unused");
+        assertThat(annotationValueOnParameter, notNullValue());
+        assertThat((String)annotationValueOnParameter, is("attributeValueOnParameter"));
+    }
+
+    @Test
+    public void testAnnotationValueOnParameterWithMissingAnnoation() {
+        try {
+            Retrieve.annotationValueOnParameter(Resource.class, "value",
+                            RetrieveTest.class, "methodForTestingPurpuseParameter", "unused");
+            assertThat("ReflectionException is expected", false);
+        } catch (ReflectionException exception) {
+            assertThat("ReflectionException is thrown", true);
+            assertThat(exception.getMessage(),
+                 equalTo("Annotation 'javax.annotation.Resource' not found in Parameter list of Method "
+                                 + "'public void de.javanarior.utils.lang.reflect."
+                                 + "RetrieveTest.methodForTestingPurpuseParameter(java.lang.String)'"));
+        }
+    }
+
+    public void methodForTestingPurpuseParameter(@Testeria("attributeValueOnParameter") String unused) {
+
+    }
 }

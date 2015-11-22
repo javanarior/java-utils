@@ -13,23 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.javanarior.utils.lang.reflect;
-
-import static java.lang.annotation.ElementType.CONSTRUCTOR;
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.ElementType.PARAMETER;
-import static java.lang.annotation.ElementType.TYPE;
-
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+package de.javanarior.utils.lang;
 
 /**
- * Annotation for testing purpose.
+ * 
  */
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ METHOD, TYPE, CONSTRUCTOR, PARAMETER })
-public @interface Testeria {
+public class Stringinator {
 
-    String value();
 }
