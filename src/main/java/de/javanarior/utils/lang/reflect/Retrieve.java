@@ -19,7 +19,6 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-
 /**
  * Retrieve values from Java Elements e.g. {@link Annotation}s.
  */
@@ -188,7 +187,9 @@ public final class Retrieve {
         }
     }
 
-    public static <T extends Annotation> Object annotationValueOnParameter(Class<T> annotationClass, String attributeName, Class<?> classWithMethod, String methodNameWithParamerter, String parameterName, Class<?>... parameterTypes) {
+    public static <T extends Annotation> Object annotationValueOnParameter(Class<T> annotationClass,
+                    String attributeName, Class<?> classWithMethod, String methodNameWithParamerter,
+                    String parameterName, Class<?>... parameterTypes) {
         Method method = findMethod(classWithMethod, methodNameWithParamerter, parameterTypes);
         for (Annotation[] annotations : method.getParameterAnnotations()) {
             for (Annotation annotation : annotations) {
@@ -197,24 +198,26 @@ public final class Retrieve {
                 }
             }
         }
-        throw new ReflectionException("Annotation '" + annotationClass.getCanonicalName() + "' not found in Parameter list of Method '" + method + "'");
+        throw new ReflectionException("Annotation '" + annotationClass.getCanonicalName()
+                        + "' not found in Parameter list of Method '" + method + "'");
     }
 
-    public static <T extends Annotation> Object annotationValueOnParameter(Class<T> annotationClass, Class<?> classWithMethod, String methodNameWithParamerter, String parameterName, Class<?>... parameterTypes) {
-        return annotationValueOnParameter(annotationClass, "value", classWithMethod, methodNameWithParamerter, parameterName, parameterTypes);
+    public static <T extends Annotation> Object annotationValueOnParameter(Class<T> annotationClass,
+                    Class<?> classWithMethod, String methodNameWithParamerter, String parameterName,
+                    Class<?>... parameterTypes) {
+        return annotationValueOnParameter(annotationClass, "value", classWithMethod, methodNameWithParamerter,
+                        parameterName, parameterTypes);
     }
-
-
-
-
 
     private static Method findMethod(Class<?> annotatedClass, String methodName, Class<?>... parameterTypes) {
         try {
             return annotatedClass.getMethod(methodName, parameterTypes);
         } catch (NoSuchMethodException exception) {
-            for (Method method : annotatedClass.getDeclaredMethods()) {
-                if (method.getName().equals(methodName)) {
-                    return method;
+            if (parameterTypes == null || parameterTypes.length == 0) {
+                for (Method method : annotatedClass.getDeclaredMethods()) {
+                    if (method.getName().equals(methodName)) {
+                        return method;
+                    }
                 }
             }
             throw new ReflectionException("Method name '" + methodName + "' not found in Class '"
