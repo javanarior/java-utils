@@ -15,30 +15,34 @@
  */
 package de.javanarior.utils.lang.reflect;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 @Test
-public class InvokerTest {
+@Testeria("attributeValue")
+public class InvokeTest {
 
     public void testInvokeConstructorNoArguments() {
-        Object instance = Invoker.invokeConstructor(Object.class);
+        Object instance = Invoke.invokeConstructor(Object.class);
         Assert.assertNotNull(instance);
     }
 
     @Test(expectedExceptions = ReflectionException.class)
     public void testInvokeConstructorNoArgumentsWithPrivateConstructor() {
-        Invoker.invokeConstructor(WithPrivateConstructor.class);
+        Invoke.invokeConstructor(WithPrivateConstructor.class);
     }
 
     public void testInvokeConstructorWithSingleArgument() {
-        Object instance = Invoker.invokeConstructor(ReflectionException.class, String.class, "TestMe");
+        Object instance = Invoke.invokeConstructor(ReflectionException.class, String.class, "TestMe");
         Assert.assertNotNull(instance);
         Assert.assertEquals(((Throwable)instance).getMessage(), "TestMe");
     }
 
     public void testInvokeConstructorWithArgumentArray() {
-        Object instance = Invoker.invokeConstructor(ReflectionException.class,
+        Object instance = Invoke.invokeConstructor(ReflectionException.class,
                         new Class[] { String.class, Throwable.class },
                         new Object[] { "TestMe", new RuntimeException("TestMeRootException") });
         Assert.assertNotNull(instance);
@@ -48,99 +52,105 @@ public class InvokerTest {
 
     @Test(expectedExceptions = ReflectionException.class)
     public void testInvokeConstructorWithWrongArguments() {
-        Invoker.invokeConstructor(ReflectionException.class,
+        Invoke.invokeConstructor(ReflectionException.class,
                         new Class[] { String.class, Throwable.class },
                         new Object[] { "TestMe", "" });
 
     }
 
     public void testInvokeConstructorBoolean() {
-        Boolean instance = Invoker.invokeConstructor(Boolean.class, Boolean.TRUE);
+        Boolean instance = Invoke.invokeConstructor(Boolean.class, Boolean.TRUE);
         Assert.assertNotNull(instance);
         Assert.assertTrue(instance.booleanValue());
     }
 
     public void testInvokeConstructorBooleanPrimitive() {
-        Boolean instance = Invoker.invokeConstructor(Boolean.class, true);
+        Boolean instance = Invoke.invokeConstructor(Boolean.class, true);
         Assert.assertNotNull(instance);
         Assert.assertTrue(instance.booleanValue());
     }
 
     public void testInvokeConstructorByte() {
-        Byte instance = Invoker.invokeConstructor(Byte.class, Byte.valueOf("2"));
+        Byte instance = Invoke.invokeConstructor(Byte.class, Byte.valueOf("2"));
         Assert.assertNotNull(instance);
         Assert.assertEquals(instance, Byte.valueOf("2"));
     }
 
     public void testInvokeConstructorBytePrimitive() {
-        Byte instance = Invoker.invokeConstructor(Byte.class, (byte)2);
+        Byte instance = Invoke.invokeConstructor(Byte.class, (byte)2);
         Assert.assertNotNull(instance);
         Assert.assertEquals(instance.byteValue(), (byte)2);
     }
 
     public void testInvokeConstructorChar() {
-        Character instance = Invoker.invokeConstructor(Character.class, 'A');
+        Character instance = Invoke.invokeConstructor(Character.class, 'A');
         Assert.assertNotNull(instance);
         Assert.assertEquals(instance, Character.valueOf('A'));
     }
 
     public void testInvokeConstructorCharPrimitive() {
-        Character instance = Invoker.invokeConstructor(Character.class, Character.valueOf('A'));
+        Character instance = Invoke.invokeConstructor(Character.class, Character.valueOf('A'));
         Assert.assertNotNull(instance);
         Assert.assertEquals(instance.charValue(), 'A');
     }
 
     public void testInvokeConstructorDouble() {
-        Double instance = Invoker.invokeConstructor(Double.class, Double.valueOf("2.2"));
+        Double instance = Invoke.invokeConstructor(Double.class, Double.valueOf("2.2"));
         Assert.assertNotNull(instance);
         Assert.assertEquals(instance, Double.valueOf("2.2"));
     }
 
     public void testInvokeConstructorDoublePrimitive() {
-        Double instance = Invoker.invokeConstructor(Double.class, 2.2);
+        Double instance = Invoke.invokeConstructor(Double.class, 2.2);
         Assert.assertNotNull(instance);
         Assert.assertEquals(instance.doubleValue(), 2.2, 0.01);
     }
 
     public void testInvokeConstructorInt() {
-        Integer instance = Invoker.invokeConstructor(Integer.class, Integer.valueOf(2));
+        Integer instance = Invoke.invokeConstructor(Integer.class, Integer.valueOf(2));
         Assert.assertNotNull(instance);
         Assert.assertEquals(instance, Integer.valueOf(2));
     }
 
     public void testInvokeConstructorIntPrimitive() {
-        Integer instance = Invoker.invokeConstructor(Integer.class, 2);
+        Integer instance = Invoke.invokeConstructor(Integer.class, 2);
         Assert.assertNotNull(instance);
         Assert.assertEquals(instance.intValue(), 2);
     }
 
     public void testInvokeConstructorLong() {
-        Long instance = Invoker.invokeConstructor(Long.class, Long.valueOf(2));
+        Long instance = Invoke.invokeConstructor(Long.class, Long.valueOf(2));
         Assert.assertNotNull(instance);
         Assert.assertEquals(instance, Long.valueOf(2));
     }
 
     public void testInvokeConstructorLongPrimitive() {
-        Long instance = Invoker.invokeConstructor(Long.class, 2L);
+        Long instance = Invoke.invokeConstructor(Long.class, 2L);
         Assert.assertNotNull(instance);
         Assert.assertEquals(instance.longValue(), 2L);
     }
 
     public void testInvokeConstructorShort() {
-        Short instance = Invoker.invokeConstructor(Short.class, Short.valueOf("2"));
+        Short instance = Invoke.invokeConstructor(Short.class, Short.valueOf("2"));
         Assert.assertNotNull(instance);
         Assert.assertEquals(instance, Short.valueOf("2"));
     }
 
     public void testInvokeConstructorShortPrimitive() {
-        Short instance = Invoker.invokeConstructor(Short.class, (short)2);
+        Short instance = Invoke.invokeConstructor(Short.class, (short)2);
         Assert.assertNotNull(instance);
         Assert.assertEquals(instance.shortValue(), 2);
     }
 
+    public void testInvokeAnnotation() {
+        Testeria annotation = InvokeTest.class.getAnnotation(Testeria.class);
+        Object attributeValue = Invoke.invokeAnnotation(annotation, "value");
+        assertThat((String)attributeValue, equalTo("attributeValue"));
+    }
+
     private static final class WithPrivateConstructor {
         private WithPrivateConstructor() {
-
         }
     }
+
 }

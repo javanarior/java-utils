@@ -15,15 +15,17 @@
  */
 package de.javanarior.utils.lang.reflect;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * Reflection Invocation helper.
  */
-public final class Invoker {
+public final class Invoke {
 
-    private Invoker() {
+    private Invoke() {
     }
 
     /**
@@ -322,4 +324,26 @@ public final class Invoker {
                         new Short[] { argument });
     }
 
+    /**
+     * Invoke the method with the name {@code attributeName} on the
+     * {@code annotation}.
+     * As result the value of {@code attributeName} is returned.
+     *
+     * @param annotation
+     *            - annotation
+     * @param attributeName
+     *            - attribute name
+     * @return the value of attributeName
+     */
+    public static <T extends Annotation> Object invokeAnnotation(T annotation, String attributeName) {
+        try {
+            Method method = annotation.annotationType().getMethod(attributeName);
+            return method.invoke(annotation);
+        } catch (NoSuchMethodException exception) {
+            throw new ReflectionException("Attribute '" + attributeName + "' not found on '"
+                            + annotation.annotationType().getCanonicalName() + "'", exception);
+        } catch (SecurityException | IllegalAccessException | InvocationTargetException exception) {
+            throw new ReflectionException(exception);
+        }
+    }
 }

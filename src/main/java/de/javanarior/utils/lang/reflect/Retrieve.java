@@ -15,9 +15,12 @@
  */
 package de.javanarior.utils.lang.reflect;
 
+import static de.javanarior.utils.lang.reflect.Invoke.invokeAnnotation;
+
 import java.lang.annotation.Annotation;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Retrieve values from Java Elements e.g. {@link Annotation}s.
@@ -25,7 +28,6 @@ import java.lang.reflect.Method;
 public final class Retrieve {
 
     private Retrieve() {
-        /* Utility class */
     }
 
     /**
@@ -53,7 +55,7 @@ public final class Retrieve {
                 throw new ReflectionException("Annotation '" + annotationClass + "' not found in Class '"
                                 + annotatedClass.getCanonicalName() + "'");
             }
-            return invokeAnnotation(attributeName, annotation);
+            return invokeAnnotation(annotation, attributeName);
         } catch (SecurityException exception) {
             throw new ReflectionException(exception);
         }
@@ -103,7 +105,7 @@ public final class Retrieve {
                 throw new ReflectionException("Annotation '" + annotationClass + "' not found on Method '"
                                 + methodWithAnnotation + "'");
             }
-            return invokeAnnotation(attributeName, annotation);
+            return invokeAnnotation(annotation, attributeName);
         } catch (SecurityException exception) {
             throw new ReflectionException(exception);
         }
@@ -187,14 +189,36 @@ public final class Retrieve {
         }
     }
 
+    /**
+     * Retrieve the value of an {@linkplain Annotation} on a method parameter.
+     * Returns the value of {@code attributeName} from {@code annotationClass}
+     * The Annotation is expected at the Method {@code methodNameWithParameter}
+     * in the class {@code classWithMethod}. If the Method is polymorphic
+     * overriden,
+     * the Signature can be provided with {@code parameterTypes}.
+     *
+     * @param annotationClass
+     *            - class of the annotation
+     * @param attributeName
+     *            - name of the attribute
+     * @param classWithMethod
+     *            - class of the method
+     * @param methodNameWithParameter
+     *            - the method name
+     * @param parameterName
+     *            - name of the parameter
+     * @param parameterTypes
+     *            - Types of the method
+     * @return value of the annotation attribute
+     */
     public static <T extends Annotation> Object annotationValueOnParameter(Class<T> annotationClass,
-                    String attributeName, Class<?> classWithMethod, String methodNameWithParamerter,
+                    String attributeName, Class<?> classWithMethod, String methodNameWithParameter,
                     String parameterName, Class<?>... parameterTypes) {
-        Method method = findMethod(classWithMethod, methodNameWithParamerter, parameterTypes);
+        Method method = findMethod(classWithMethod, methodNameWithParameter, parameterTypes);
         for (Annotation[] annotations : method.getParameterAnnotations()) {
             for (Annotation annotation : annotations) {
                 if (annotation.annotationType().isAssignableFrom(annotationClass)) {
-                    return invokeAnnotation(attributeName, annotation);
+                    return invokeAnnotation(annotation, attributeName);
                 }
             }
         }
@@ -202,6 +226,28 @@ public final class Retrieve {
                         + "' not found in Parameter list of Method '" + method + "'");
     }
 
+    /**
+     * Retrieve the value of an {@linkplain Annotation} on a method parameter.
+     * The
+     * Attribute/Method 'value' is assumed as default.
+     * Returns the value of 'value' from {@code annotationClass} The Annotation
+     * is expected at the Method {@code methodNameWithParameter} in the class
+     * {@code classWithMethod}. If the Method is polymorphic overriden,
+     * the Signature can be provided with {@code parameterTypes}.
+     *
+     * @param annotationClass
+     *            - class of the annotation
+     * @param annotationClass
+     * @param classWithMethod
+     *            - class of the method
+     * @param methodNameWithParameter
+     *            - the method name
+     * @param parameterName
+     *            - name of the parameter
+     * @param parameterTypes
+     *            - Types of the method
+     * @return value of the annotation attribute
+     */
     public static <T extends Annotation> Object annotationValueOnParameter(Class<T> annotationClass,
                     Class<?> classWithMethod, String methodNameWithParamerter, String parameterName,
                     Class<?>... parameterTypes) {
@@ -214,10 +260,9 @@ public final class Retrieve {
             return annotatedClass.getMethod(methodName, parameterTypes);
         } catch (NoSuchMethodException exception) {
             if (parameterTypes == null || parameterTypes.length == 0) {
-                for (Method method : annotatedClass.getDeclaredMethods()) {
-                    if (method.getName().equals(methodName)) {
-                        return method;
-                    }
+                List<Method> possibleMatches = findMethods(annotatedClass.getDeclaredMethods(), methodName);
+                if (possibleMatches.size() == 1) {
+                    return possibleMatches.get(0);
                 }
             }
             throw new ReflectionException("Method name '" + methodName + "' not found in Class '"
@@ -225,16 +270,14 @@ public final class Retrieve {
         }
     }
 
-    private static <T extends Annotation> Object invokeAnnotation(String attributeName, T annotation) {
-        try {
-            Method method = annotation.annotationType().getMethod(attributeName);
-            return method.invoke(annotation);
-        } catch (NoSuchMethodException exception) {
-            throw new ReflectionException("Attribute '" + attributeName + "' not found on '"
-                            + annotation.annotationType().getCanonicalName() + "'", exception);
-        } catch (SecurityException | IllegalAccessException | InvocationTargetException exception) {
-            throw new ReflectionException(exception);
+    private static List<Method> findMethods(Method[] methods, String methodName) {
+        List<Method> matchingMethods = new ArrayList<>();
+        for (Method method : methods) {
+            if (method.getName().equals(methodName)) {
+                matchingMethods.add(method);
+            }
         }
+        return matchingMethods;
     }
 
 }

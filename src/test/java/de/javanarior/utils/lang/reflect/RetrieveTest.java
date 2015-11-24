@@ -105,10 +105,23 @@ public class RetrieveTest {
     }
 
     @Test(invocationCount=5)
-    public void testAnnotationValueOnMethodWithParameterPolymorphismAndEmptyTypes() {
+    public void testAnnotationValueOnMethodWithParameterPolymorphismAndWrongType() {
         try {
             Retrieve.annotationValueOnMethod(Resource.class, "name", RetrieveTest.class,
                             "methodForTestingPurposePolymorphism", Long.class);
+            assertThat("ReflectionException is expected", false);
+        } catch (ReflectionException exception) {
+            assertThat("ReflectionException is thrown", true);
+            assertThat(exception.getMessage(), equalTo("Method name 'methodForTestingPurposePolymorphism' "
+                            + "not found in Class 'de.javanarior.utils.lang.reflect.RetrieveTest'"));
+        }
+    }
+
+    @Test(invocationCount=5)
+    public void testAnnotationValueOnMethodWithParameterPolymorphismAndEmptyTypes() {
+        try {
+            Retrieve.annotationValueOnMethod(Resource.class, "name", RetrieveTest.class,
+                            "methodForTestingPurposePolymorphism", new Class[0]);
             assertThat("ReflectionException is expected", false);
         } catch (ReflectionException exception) {
             assertThat("ReflectionException is thrown", true);
