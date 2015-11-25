@@ -88,7 +88,7 @@ public class RetrieveTest {
         /* Do nothing */
     }
 
-    @Test(invocationCount=5)
+    @Test(invocationCount = 5)
     public void testAnnotationValueOnMethodWithParameterPolymorphismString() {
         Object attributeValue = Retrieve.annotationValueOnMethod(Resource.class, "name", RetrieveTest.class,
                         "methodForTestingPurposePolymorphism", String.class);
@@ -96,7 +96,7 @@ public class RetrieveTest {
         assertThat((String)attributeValue, equalTo("attributeValueString"));
     }
 
-    @Test(invocationCount=5)
+    @Test(invocationCount = 5)
     public void testAnnotationValueOnMethodWithParameterPolymorphismInteger() {
         Object attributeValue = Retrieve.annotationValueOnMethod(Resource.class, "name", RetrieveTest.class,
                         "methodForTestingPurposePolymorphism", Integer.TYPE);
@@ -104,7 +104,7 @@ public class RetrieveTest {
         assertThat((String)attributeValue, equalTo("attributeValueInteger"));
     }
 
-    @Test(invocationCount=5)
+    @Test(invocationCount = 5)
     public void testAnnotationValueOnMethodWithParameterPolymorphismAndWrongType() {
         try {
             Retrieve.annotationValueOnMethod(Resource.class, "name", RetrieveTest.class,
@@ -117,7 +117,7 @@ public class RetrieveTest {
         }
     }
 
-    @Test(invocationCount=5)
+    @Test(invocationCount = 5)
     public void testAnnotationValueOnMethodWithParameterPolymorphismAndEmptyTypes() {
         try {
             Retrieve.annotationValueOnMethod(Resource.class, "name", RetrieveTest.class,
