@@ -237,7 +237,6 @@ public final class Retrieve {
      *
      * @param annotationClass
      *            - class of the annotation
-     * @param annotationClass
      * @param classWithMethod
      *            - class of the method
      * @param methodNameWithParameter
@@ -249,9 +248,9 @@ public final class Retrieve {
      * @return value of the annotation attribute
      */
     public static <T extends Annotation> Object annotationValueOnParameter(Class<T> annotationClass,
-                    Class<?> classWithMethod, String methodNameWithParamerter, String parameterName,
+                    Class<?> classWithMethod, String methodNameWithParameter, String parameterName,
                     Class<?>... parameterTypes) {
-        return annotationValueOnParameter(annotationClass, "value", classWithMethod, methodNameWithParamerter,
+        return annotationValueOnParameter(annotationClass, "value", classWithMethod, methodNameWithParameter,
                         parameterName, parameterTypes);
     }
 
