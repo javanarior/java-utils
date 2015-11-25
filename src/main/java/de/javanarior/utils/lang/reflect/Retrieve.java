@@ -197,6 +197,8 @@ public final class Retrieve {
      * overriden,
      * the Signature can be provided with {@code parameterTypes}.
      *
+     * @param <T>
+     *            - the annotation class
      * @param annotationClass
      *            - class of the annotation
      * @param attributeName
@@ -211,11 +213,11 @@ public final class Retrieve {
      *            - Types of the method
      * @return value of the annotation attribute
      */
-//    CHECKTSYLE:OFF
+    // CHECKTSYLE:OFF
     public static <T extends Annotation> Object annotationValueOnParameter(Class<T> annotationClass,
                     String attributeName, Class<?> classWithMethod, String methodNameWithParameter,
                     String parameterName, Class<?>... parameterTypes) {
-//    CHECKTSYLE:ON
+        // CHECKTSYLE:ON
         Method method = findMethod(classWithMethod, methodNameWithParameter, parameterTypes);
         for (Annotation[] annotations : method.getParameterAnnotations()) {
             for (Annotation annotation : annotations) {
@@ -237,6 +239,8 @@ public final class Retrieve {
      * {@code classWithMethod}. If the Method is polymorphic overriden,
      * the Signature can be provided with {@code parameterTypes}.
      *
+     * @param <T>
+     *            - the annotation class
      * @param annotationClass
      *            - class of the annotation
      * @param classWithMethod

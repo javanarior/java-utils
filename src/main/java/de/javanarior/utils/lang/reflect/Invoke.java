@@ -329,6 +329,8 @@ public final class Invoke {
      * {@code annotation}.
      * As result the value of {@code attributeName} is returned.
      *
+     * @param <T>
+     *            - the annotation class
      * @param annotation
      *            - annotation
      * @param attributeName
