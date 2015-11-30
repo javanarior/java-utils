@@ -6,7 +6,7 @@
 
 Introduction
 
-  Here various Java utilities to be.
+  Includes various Java utilities. Take an view at the {{{./apidocs/index.html}Javadoc API}} for an overview.
 
 %{include|source=apt/feature-list.apt}
 
