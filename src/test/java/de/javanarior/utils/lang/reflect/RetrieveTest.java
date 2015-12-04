@@ -213,6 +213,14 @@ public class RetrieveTest {
     }
 
     @Test
+    public void testAnnotationValueOnParameterWithDefaultAttributeNameAndNoParameterTypes() {
+        Object annotationValueOnParameter = Retrieve.annotationValueOnParameter(Testeria.class,
+                        RetrieveTest.class, "methodForTestingPurpuseParameter", "unused");
+        assertThat(annotationValueOnParameter, notNullValue());
+        assertThat((String)annotationValueOnParameter, is("attributeValueOnParameter"));
+    }
+
+    @Test
     public void testAnnotationValueOnParameterWithMissingAnnoation() {
         try {
             Retrieve.annotationValueOnParameter(Resource.class, "value",

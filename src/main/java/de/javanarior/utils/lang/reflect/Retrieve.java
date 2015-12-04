@@ -134,12 +134,8 @@ public final class Retrieve {
      */
     public static <T extends Annotation> Object annotationValueOnMethod(Class<T> annotationClass, String attributeName,
                     Class<?> classWithMethod, String methodName, Class<?>... parameterTypes) {
-        try {
-            return annotationValueOnMethod(annotationClass, findMethod(classWithMethod, methodName, parameterTypes),
-                            attributeName);
-        } catch (SecurityException exception) {
-            throw new ReflectionException(exception);
-        }
+        return annotationValueOnMethod(annotationClass, findMethod(classWithMethod, methodName, parameterTypes),
+                        attributeName);
     }
 
     /**
@@ -236,7 +232,7 @@ public final class Retrieve {
      * Attribute/Method 'value' is assumed as default.
      * Returns the value of 'value' from {@code annotationClass} The Annotation
      * is expected at the Method {@code methodNameWithParameter} in the class
-     * {@code classWithMethod}. If the Method is polymorphic overriden,
+     * {@code classWithMethod}. If the Method is polymorphic overridden,
      * the Signature can be provided with {@code parameterTypes}.
      *
      * @param <T>
@@ -250,7 +246,7 @@ public final class Retrieve {
      * @param parameterName
      *            - name of the parameter
      * @param parameterTypes
-     *            - Types of the method
+     *            - Types of the method parameter
      * @return value of the annotation attribute
      */
     public static <T extends Annotation> Object annotationValueOnParameter(Class<T> annotationClass,
@@ -259,6 +255,8 @@ public final class Retrieve {
         return annotationValueOnParameter(annotationClass, "value", classWithMethod, methodNameWithParameter,
                         parameterName, parameterTypes);
     }
+
+
 
     private static Method findMethod(Class<?> annotatedClass, String methodName, Class<?>... parameterTypes) {
         try {
