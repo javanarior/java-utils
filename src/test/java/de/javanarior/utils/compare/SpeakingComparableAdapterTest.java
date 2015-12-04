@@ -81,7 +81,7 @@ public class SpeakingComparableAdapterTest {
 
         private Integer value;
 
-        public SpeakingComparableInteger(int value) {
+        SpeakingComparableInteger(int value) {
             this.value = Integer.valueOf(value);
         }
 
