@@ -43,7 +43,7 @@
 
     <properties>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <javanarior-build-resources.version>14</javanarior-build-resources.version>
+        <javanarior-build-resources.version>15</javanarior-build-resources.version>
         <java.version>1.7</java.version>
         <sonar.clirr.api>true</sonar.clirr.api>
     </properties>

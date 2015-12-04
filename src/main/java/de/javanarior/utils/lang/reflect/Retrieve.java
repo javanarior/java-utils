@@ -209,11 +209,11 @@ public final class Retrieve {
      *            - Types of the method
      * @return value of the annotation attribute
      */
-    // CHECKTSYLE:OFF
+    // CHECKSTYLE:OFF
     public static <T extends Annotation> Object annotationValueOnParameter(Class<T> annotationClass,
                     String attributeName, Class<?> classWithMethod, String methodNameWithParameter,
                     String parameterName, Class<?>... parameterTypes) {
-        // CHECKTSYLE:ON
+        // CHECKSTYLE:ON
         Method method = findMethod(classWithMethod, methodNameWithParameter, parameterTypes);
         for (Annotation[] annotations : method.getParameterAnnotations()) {
             for (Annotation annotation : annotations) {
