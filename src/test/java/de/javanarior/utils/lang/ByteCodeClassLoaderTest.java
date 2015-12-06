@@ -15,6 +15,7 @@
  */
 package de.javanarior.utils.lang;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -79,7 +80,7 @@ public class ByteCodeClassLoaderTest {
         Assert.assertSame(first, second);
     }
 
-    private byte[] readByteCode() throws Exception {
+    private byte[] readByteCode() throws IOException {
         Path file = Paths.get("src/test/resources/de.javanarior.utils.lang.TestMe.class");
         return Files.readAllBytes(file);
     }
