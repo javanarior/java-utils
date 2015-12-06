@@ -23,9 +23,9 @@ under the License.
     <link>http://javanarior.github.io/java-utils</link>
     <description>Java Utilities - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2014</copyright>
+    <copyright>&#169;2014 - 2015</copyright>
     <item>
-      <title>File: 15,
+      <title>File: 18,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.lang.reflect.InvokerTest.java">de/javanarior/utils/lang/reflect/InvokerTest.java</a>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compare.SpeakingComparable.java">de/javanarior/utils/compare/SpeakingComparable.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compare.SpeakingComparable.java">de/javanarior/utils/compare/SpeakingComparable.java</a>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.lang.reflect.Retrieve.java">de/javanarior/utils/lang/reflect/Retrieve.java</a>
                 </td>
                 <td>
                   0
@@ -102,20 +102,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.lang.reflect.Invoker.java">de/javanarior/utils/lang/reflect/Invoker.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.lang.reflect.package-info.java">de/javanarior/utils/lang/reflect/package-info.java</a>
                 </td>
                 <td>
@@ -144,7 +130,35 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.lang.reflect.Invoke.java">de/javanarior/utils/lang/reflect/Invoke.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.lang.ByteCodeContainer.java">de/javanarior/utils/lang/ByteCodeContainer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.lang.reflect.RetrieveTest.java">de/javanarior/utils/lang/reflect/RetrieveTest.java</a>
                 </td>
                 <td>
                   0
@@ -214,7 +228,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.Speaking.java">de/javanarior/utils/Speaking.java</a>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.lang.reflect.Testeria.java">de/javanarior/utils/lang/reflect/Testeria.java</a>
                 </td>
                 <td>
                   0
@@ -229,6 +243,34 @@ under the License.
                           <tr>
                 <td>
                   <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.compare.SpeakingComparableAdapterTest.java">de/javanarior/utils/compare/SpeakingComparableAdapterTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.Speaking.java">de/javanarior/utils/Speaking.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://javanarior.github.io/java-utils/checkstyle.html#de.javanarior.utils.lang.reflect.InvokeTest.java">de/javanarior/utils/lang/reflect/InvokeTest.java</a>
                 </td>
                 <td>
                   0
